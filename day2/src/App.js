@@ -31,9 +31,11 @@ function Image(props) {
 
 class MovieItem extends Component {
   constructor() {
-    super()
+    super();
+
+
     this.state = {
-      show: true
+      show: false
     }
   }
   render() {
@@ -44,6 +46,18 @@ class MovieItem extends Component {
         <Image src={image} alt={title} />
         <p>{title}</p>
         <p>{vote_average}</p>
+        <button type="button" onClick={() => {
+          console.log("show");
+          this.setState({
+            show: true
+          })
+        }}>Show</button>
+        <button type="button" onClick={() => {
+          console.log("show");
+          this.setState({
+            show: false
+          })
+        }}>Hide</button>
         {this.state.show === true ? <p>{overwiev}</p> : null}
       </div>
     )
