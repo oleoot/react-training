@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import "./App.css"
 import moviesData from "./moviesData"
-
+import movieItem from "./movieItem"
+import MovieItem from './movieItem';
 
 
 
@@ -13,7 +14,7 @@ class App extends Component {
     }
   }
 
-  removeMovie(movie) {
+  removeMovie = movie => {
     const updateMovies = this.state.movies.filter(function (item) {
       return (
         item.id !== movie.id
@@ -28,15 +29,15 @@ class App extends Component {
 
   render() {
     return (
-      <div> {this.state.movies.map((movie) => {
-        return (
-          <div key={movie.id}>
-            <p>{movie.title}</p>
-            <button type="button" onClick={this.removeMovie.bind(this, movie)}>Delete Movie</button>
-          </div>
+      <div>
+        {this.state.movies.map(movie => {
+          return (
+            <MovieItem key={movie.id} movie={movie} removeMovie={this.removeMovie} />
+          )
+        }
         )
-      })
-      }</div >
+        }
+      </div >
     )
   }
 }
