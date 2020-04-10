@@ -15,7 +15,9 @@ class App extends Component {
   render() {
     console.log(this)
     return (
-      <div> {this.state.movies[0].title}</div >
+      <div> {this.state.movies.map((movie) => {
+        return <p>{movie.title}</p>
+      })}</div >
     )
   }
 }
