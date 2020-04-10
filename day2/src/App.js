@@ -47,17 +47,10 @@ class MovieItem extends Component {
         <p>{title}</p>
         <p>{vote_average}</p>
         <button type="button" onClick={() => {
-          console.log("show");
           this.setState({
-            show: true
+            show: !this.state.show
           })
-        }}>Show</button>
-        <button type="button" onClick={() => {
-          console.log("show");
-          this.setState({
-            show: false
-          })
-        }}>Hide</button>
+        }}>{this.state.show ? "Hide" : "Show"}</button>
         {this.state.show === true ? <p>{overwiev}</p> : null}
       </div>
     )
