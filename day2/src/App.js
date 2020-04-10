@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import "./App.css"
 const movie = {
   title: "Avengers Infinity war",
   vote_average: 8.5,
@@ -8,7 +8,7 @@ const movie = {
 }
 function Image(props) {
   return (
-    <img src={props.src} alt={props.title} />
+    <img width="100%" src={props.src} alt={props.title} />
   )
 }
 
@@ -35,24 +35,34 @@ class MovieItem extends Component {
 
 
     this.state = {
-      show: false
+      show: false,
+      like: false
     }
+  }
+  handleLike = () => {
+    this.setState({
+      like: !this.state.like
+    })
+  }
+  toggleOverview = () => {
+    this.setState({
+      show: !this.state.show
+    })
   }
   render() {
     const { data: { title, vote_average, image, overwiev } } = this.props;
     console.log(this.state)
     return (
-      <div>
+      <div style={{ width: "300px" }}>
         <Image src={image} alt={title} />
         <p>{title}</p>
         <p>{vote_average}</p>
-        <button type="button" onClick={() => {
-          this.setState({
-            show: !this.state.show
-          })
-        }}>{this.state.show ? "Hide" : "Show"}</button>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <button type="button" onClick={this.toggleOverview}>{this.state.show ? "Hide" : "Show"}</button>
+          <button type="button" onClick={this.handleLike} className={this.state.like ? "btn--like" : ""}>Like</button>
+        </div>
         {this.state.show === true ? <p>{overwiev}</p> : null}
-      </div>
+      </div >
     )
   }
 }
