@@ -29,7 +29,6 @@ class App extends Component {
 
 
   addMovieToWillWatch = (movie) => {
-
     console.log(movie)
     const updateMoviesWillWatch = [...this.state.moviesWillWatch];
     updateMoviesWillWatch.push(movie);
@@ -37,6 +36,22 @@ class App extends Component {
       moviesWillWatch: updateMoviesWillWatch
     })
   }
+
+
+
+  removeMovieFromWillWatch = movie => {
+    const updateMoviesWillWatch = this.state.moviesWillWatch.filter(function (item) {
+      return (
+        item.id !== movie.id
+      )
+    })
+    this.setState({
+      moviesWillWatch: updateMoviesWillWatch
+    })
+  }
+
+
+
 
 
 
@@ -49,7 +64,7 @@ class App extends Component {
               {this.state.movies.map(movie => {
                 return (
                   <div className="col-6 mb-4" key={movie.id}>
-                    <MovieItem movie={movie} removeMovie={this.removeMovie} addMovieToWillWatch={this.addMovieToWillWatch} />
+                    <MovieItem movie={movie} removeMovie={this.removeMovie} addMovieToWillWatch={this.addMovieToWillWatch} removeMovieFromWillWatch={this.removeMovieFromWillWatch} />
                   </div>
 
                 )
