@@ -39,7 +39,14 @@ class MovieItem extends Component {
                         }
 
                     </div>
-                    <button type="button" onClick={removeMovie.bind(null, movie)}>Delete Movie</button>
+                    <button type="button" onClick={() => {
+
+
+                        removeMovie(movie)
+
+                        removeMovieFromWillWatch(movie);
+
+                    }}>Delete Movie</button>
                 </div>
             </div >
 
